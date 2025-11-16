@@ -1206,12 +1206,11 @@
         const n = idx+1;
         populateYardSelect(`putt${n}-target`, 50, p.targetYard, true);
 
-        // Result（単一）
-        document.querySelectorAll(`.puttdetail-result[data-putt="${n}"]`).forEach(lbl=>{
-          const on = (p.result === lbl.dataset.val);
-          lbl.classList.toggle('on', on);
-        });
-
+// Result（複数選択に変更）
+document.querySelectorAll(`.puttdetail-result[data-putt="${n}"]`).forEach(lbl=>{
+  const on = Array.isArray(p.result) && p.result.includes(lbl.dataset.val);
+  lbl.classList.toggle('on', on);
+});
         // Stroke（複数）
         const strokes = Array.isArray(p.stroke)? p.stroke : [];
         document.querySelectorAll(`.puttdetail-stroke[data-putt="${n}"]`).forEach(lbl=>{
@@ -1653,19 +1652,27 @@ inSummary.target  = inTarget;
         });
       });
 
-      // Putt Detail: Result（単一）
-      document.querySelectorAll('.puttdetail-result').forEach(lbl=>{
-        lbl.addEventListener('click', ()=>{
-          const putt = parseInt(lbl.dataset.putt,10)-1;
-          const val = lbl.dataset.val;
-          const h = curHole();
-          if(!Array.isArray(h.puttDetail)) h.puttDetail = createDefaultPuttDetail();
-          if(!h.puttDetail[putt]) h.puttDetail[putt] = { targetYard:null, stroke:[], result:null, read:null };
+    // Putt Detail: Result（複数選択に変更）
+document.querySelectorAll('.puttdetail-result').forEach(lbl=>{
+  lbl.addEventListener('click', ()=>{
+    const putt = parseInt(lbl.dataset.putt,10)-1;
+    const val = lbl.dataset.val;
+    const h = curHole();
+    if(!Array.isArray(h.puttDetail)) h.puttDetail = createDefaultPuttDetail();
+    if(!h.puttDetail[putt]) h.puttDetail[putt] = { targetYard:null, stroke:[], result:[], read:null };
 
-          h.puttDetail[putt].result = val;
-          save(); renderTracker();
-        });
-      });
+    // 必ず配列として保持
+    if(!Array.isArray(h.puttDetail[putt].result)) h.puttDetail[putt].result = [];
+
+    const arr = h.puttDetail[putt].result;
+    const idx = arr.indexOf(val);
+
+    if(idx >= 0) arr.splice(idx,1);
+    else arr.push(val);
+
+    save(); renderTracker();
+  });
+});
 
       // Putt Detail: Stroke（複数）
       document.querySelectorAll('.puttdetail-stroke').forEach(lbl=>{

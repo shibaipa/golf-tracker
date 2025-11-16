@@ -1429,88 +1429,142 @@ inSummary.target  = inTarget;
     }
 
     /* ========== CSV Export (per round) ========== */
-    function exportRoundCSV(id){
-      const raw = storage.get(keyFor(id));
-      if(!raw){ alert('Round not found.'); return; }
-      const r = upgradeRoundIfNeeded(jparse(raw,null)); if(!r){ alert('Invalid round data.'); return; }
+  function exportRoundCSV(id){
+  const raw = storage.get(keyFor(id));
+  if(!raw){
+    alert('Round not found.');
+    return;
+  }
+  const r = upgradeRoundIfNeeded(jparse(raw, null));
+  if(!r){
+    alert('Invalid round data.');
+    return;
+  }
 
-      const rows = [[
-        'Hole','Par','TargetScore','ToSZ','SZtoG','Putts','Gross',
-        'TeeClub','TeeResult','TeeDirection',
-        'ToSZ_OB','ToSZ_Penalty','ToSZ_Bunker','ToSZ_Topped','ToSZ_HeavyDuff','ToSZ_Shank',
-        'SZtoG_OB','SZtoG_Penalty','SZtoG_Bunker','SZtoG_Topped','SZtoG_HeavyDuff','SZtoG_Shank',
-        'Shot1_TargetYard','Shot1_Club','Shot1_ActualYard','Shot1_Outcomes',
-        'Shot2_TargetYard','Shot2_Club','Shot2_ActualYard','Shot2_Outcomes',
-        'Shot3_TargetYard','Shot3_Club','Shot3_ActualYard','Shot3_Outcomes',
-        'Putt1_TargetYard','Putt1_Stroke','Putt1_Result','Putt1_Read',
-        'Putt2_TargetYard','Putt2_Stroke','Putt2_Result','Putt2_Read',
-        'Putt3_TargetYard','Putt3_Stroke','Putt3_Result','Putt3_Read',
-        'Putt4_TargetYard','Putt4_Stroke','Putt4_Result','Putt4_Read',
-        'vsTarget','vsPar','GIRLabel','Memo'
-      ]];
+  // =====（1）Total Gross を計算 =====
+  const played = r.playOrder.filter(no=>{
+    const h = r.holes[no-1];
+    return (h.strokesToSZ||0)+(h.strokesFromSZ||0)+(h.putts||0)>0
+        || Number.isInteger(h.resultOverride);
+  });
+  const totalGross = played.reduce((sum, no)=>{
+    const h = r.holes[no-1];
+    const auto = getGrossAuto(h, r);
+    const gross = Number.isInteger(h.resultOverride) ? h.resultOverride : auto;
+    return sum + gross;
+  }, 0);
 
-      r.playOrder.forEach(no=>{
-        const h = r.holes[no-1];
-        const {targetScore} = calcTargetsFor(h);
-        const grossAuto = getGrossAuto(h, r);
-        const gross = Number.isInteger(h.resultOverride)? h.resultOverride : grossAuto;
+  // =====（2）メタ情報行 =====
+  const metaRows = [
+    [`Course: ${r.courseName || ''}`],
+    [`Date: ${r.date || ''}`],
+    [`Total Score: ${totalGross}`],
+    [''] // 空行
+  ];
 
-        const strokesToGreen = (h.strokesToSZ||0)+(h.strokesFromSZ||0);
-        let girLabel = '';
-        if(strokesToGreen>0){
-          if(strokesToGreen <= h.par-2) girLabel = 'GIR';
-          else if(strokesToGreen <= h.par-1) girLabel = 'GIR+1';
-        }
+  // =====（3）既存 CSV ヘッダー =====
+  const header = [[
+    'Hole','Par','TargetScore','ToSZ','SZtoG','Putts','Gross',
+    'TeeClub','TeeResult','TeeDirection',
 
-        const sgArr = Array.isArray(h.sgDetail) ? h.sgDetail : createDefaultSGDetail();
-        const s1 = sgArr[0] || {};
-        const s2 = sgArr[1] || {};
-        const s3 = sgArr[2] || {};
+    'ToSZ_OB','ToSZ_Penalty','ToSZ_Bunker','ToSZ_Topped','ToSZ_HeavyDuff','ToSZ_Shank',
+    'SZtoG_OB','SZtoG_Penalty','SZtoG_Bunker','SZtoG_Topped','SZtoG_HeavyDuff','SZtoG_Shank',
 
-        const s1Out = Array.isArray(s1.outcomes) ? s1.outcomes.join(';') : '';
-        const s2Out = Array.isArray(s2.outcomes) ? s2.outcomes.join(';') : '';
-        const s3Out = Array.isArray(s3.outcomes) ? s3.outcomes.join(';') : '';
+    'Shot1_TargetYard','Shot1_Club','Shot1_ActualYard','Shot1_Outcomes',
+    'Shot2_TargetYard','Shot2_Club','Shot2_ActualYard','Shot2_Outcomes',
+    'Shot3_TargetYard','Shot3_Club','Shot3_ActualYard','Shot3_Outcomes',
 
-        const pArr = Array.isArray(h.puttDetail)? h.puttDetail : createDefaultPuttDetail();
-        const puttCells = pArr.slice(0,4).map(p=>{
-          const strokeStr = Array.isArray(p.stroke)? p.stroke.join(';') : '';
-          return [
-            p.targetYard==null ? '' : p.targetYard,
-            strokeStr,
-            p.result || '',
-            p.read || ''
-          ];
-        }).flat();
+    'Putt1_TargetYard','Putt1_Stroke','Putt1_Read','Putt1_Result',
+    'Putt2_TargetYard','Putt2_Stroke','Putt2_Read','Putt2_Result',
+    'Putt3_TargetYard','Putt3_Stroke','Putt3_Read','Putt3_Result',
+    'Putt4_TargetYard','Putt4_Stroke','Putt4_Read','Putt4_Result',
 
-        rows.push([
-          no, h.par, targetScore,
-          (h.strokesToSZ||0),
-          (h.strokesFromSZ||0),
-          (h.putts||0),
-          gross,
-          h.teeClub, h.teeResult, h.teeDirection,
-          (h.toSZ.ob||0),(h.toSZ.penalty||0),(h.toSZ.bunker||0),(h.toSZ.topped||0),(h.toSZ.heavyDuff||0),(h.toSZ.shank||0),
-          (h.szToG.ob||0),(h.szToG.penalty||0),(h.szToG.bunker||0),(h.szToG.topped||0),(h.szToG.heavyDuff||0),(h.szToG.shank||0),
-          (s1.targetYard==null?'':s1.targetYard),(s1.club||''),(s1.actualYard==null?'':s1.actualYard),s1Out,
-          (s2.targetYard==null?'':s2.targetYard),(s2.club||''),(s2.actualYard==null?'':s2.actualYard),s2Out,
-          (s3.targetYard==null?'':s3.targetYard),(s3.club||''),(s3.actualYard==null?'':s3.actualYard),s3Out,
-          ...puttCells,
-          (gross-targetScore),(gross-h.par),
-          girLabel,
-          h.memo || ''
-        ]);
-      });
+    'vsTarget','vsPar','GIRLabel','Memo'
+  ]];
 
-      const csv = rows.map(r=>r.map(x=>String(x).replace(/"/g,'""')).map(x=>`"${x}"`).join(',')).join('\n');
-      const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
-      const a = document.createElement('a');
-      a.href = URL.createObjectURL(blob);
-      a.download = `round_${r.roundId}.csv`;
-      document.body.appendChild(a);
-      a.click();
-      document.body.removeChild(a);
-      URL.revokeObjectURL(a.href);
+  // =====（4）行データ =====
+  const rows = [];
+
+  r.playOrder.forEach(no=>{
+    const h = r.holes[no-1];
+    const {targetScore} = calcTargetsFor(h);
+
+    const grossAuto = getGrossAuto(h, r);
+    const gross = Number.isInteger(h.resultOverride) ? h.resultOverride : grossAuto;
+
+    const sg = Array.isArray(h.sgDetail) ? h.sgDetail : createDefaultSGDetail();
+    const [s1,s2,s3] = sg;
+
+    const s1Out = Array.isArray(s1?.outcomes) ? s1.outcomes.join(';') : '';
+    const s2Out = Array.isArray(s2?.outcomes) ? s2.outcomes.join(';') : '';
+    const s3Out = Array.isArray(s3?.outcomes) ? s3.outcomes.join(';') : '';
+
+    const pd = Array.isArray(h.puttsDetail) ? h.puttsDetail : [];
+    const pdSel = (i, field)=>{
+      const o = pd[i] || {};
+      if(Array.isArray(o[field])) return o[field].join(';');
+      return o[field] || '';
+    };
+
+    const strokesToGreen = (h.strokesToSZ||0)+(h.strokesFromSZ||0);
+    let girLabel = '';
+    if(strokesToGreen > 0){
+      if(strokesToGreen <= h.par-2) girLabel = 'GIR';
+      else if(strokesToGreen <= h.par-1) girLabel = 'GIR+1';
     }
+
+    rows.push([
+      no,
+      h.par,
+      targetScore,
+      (h.strokesToSZ||0),
+      (h.strokesFromSZ||0),
+      (h.putts||0),
+      gross,
+
+      h.teeClub,
+      h.teeResult,
+      h.teeDirection,
+
+      (h.toSZ.ob||0),(h.toSZ.penalty||0),(h.toSZ.bunker||0),
+      (h.toSZ.topped||0),(h.toSZ.heavyDuff||0),(h.toSZ.shank||0),
+
+      (h.szToG.ob||0),(h.szToG.penalty||0),(h.szToG.bunker||0),
+      (h.szToG.topped||0),(h.szToG.heavyDuff||0),(h.szToG.shank||0),
+
+      s1.targetYard ?? '', s1.club ?? '', s1.actualYard ?? '', s1Out,
+      s2.targetYard ?? '', s2.club ?? '', s2.actualYard ?? '', s2Out,
+      s3.targetYard ?? '', s3.club ?? '', s3.actualYard ?? '', s3Out,
+
+      pdSel(0,'targetYard'), pdSel(0,'stroke'), pdSel(0,'read'), pdSel(0,'result'),
+      pdSel(1,'targetYard'), pdSel(1,'stroke'), pdSel(1,'read'), pdSel(1,'result'),
+      pdSel(2,'targetYard'), pdSel(2,'stroke'), pdSel(2,'read'), pdSel(2,'result'),
+      pdSel(3,'targetYard'), pdSel(3,'stroke'), pdSel(3,'read'), pdSel(3,'result'),
+
+      (gross - targetScore),
+      (gross - h.par),
+      girLabel,
+
+      h.memo || ''
+    ]);
+  });
+
+  const allRows = [...metaRows, ...header, ...rows];
+
+  const csv = allRows
+    .map(r => r.map(x => String(x).replace(/"/g,'""')).map(x=>`"${x}"`).join(','))
+    .join('\n');
+
+  const blob = new Blob([csv], {type:'text/csv;charset=utf-8;'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = `round_${r.roundId}.csv`;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(a.href);
+}
+
 
     /* ========== Events ========== */
     function bindEvents(){

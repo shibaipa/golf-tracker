@@ -20,6 +20,7 @@
     .btn-toggle{border-width:2px;border-radius:.5rem;padding:.375rem .5rem;display:inline-flex;align-items:center;justify-content:center;font-weight:600}
     .btn-toggle.on{background:#10b981;color:white;border-color:#10b981}
     .pill{border:1px solid #e5e7eb;border-radius:9999px;padding:.25rem .5rem;font-size:.75rem;cursor:pointer;user-select:none}
+    .pill.on{background:#10b981;color:white;border-color:#10b981}
     .score-ok{color:#059669;font-weight:600}
     .score-ng{color:#dc2626;font-weight:600}
     .grid-head{font-size:.65rem;color:#6b7280}
@@ -223,8 +224,324 @@
         </div>
       </div>
 
-      <!-- Other (split: To SZ / SZ to G) -->
-      <div class="grid md:grid-cols-2 gap-4 mt-4">
+      <!-- SZ to G detail (Shot1〜3) -->
+      <div class="mt-4">
+        <div class="p-3 rounded-lg border">
+          <div class="text-sm font-semibold mb-2">SZ to G detail</div>
+
+          <!-- Shot 1 -->
+          <div class="mb-4">
+            <div class="text-xs font-semibold mb-1">Shot 1</div>
+            <div class="grid md:grid-cols-3 gap-2 mb-2">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Target yard</div>
+                <select id="szshot1-target" class="w-full p-2 border rounded-md szdetail-select" data-shot="1" data-field="targetYard"></select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Club</div>
+                <select id="szshot1-club" class="w-full p-2 border rounded-md szdetail-select" data-shot="1" data-field="club">
+                  <option value=""></option>
+                  <option value="PW">PW</option>
+                  <option value="56">56</option>
+                  <option value="50">50</option>
+                  <option value="Putter">Putter</option>
+                  <option value="52">52</option>
+                  <option value="8I">8I</option>
+                  <option value="9I">9I</option>
+                </select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Actual yard</div>
+                <select id="szshot1-actual" class="w-full p-2 border rounded-md szdetail-select" data-shot="1" data-field="actualYard"></select>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mb-1">Outcomes</div>
+            <div class="grid grid-cols-5 gap-1 text-xs text-center mb-1">
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Short">Short</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Straight">Straight</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Over">Over</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Left">Left</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Right">Right</label>
+            </div>
+            <div class="grid grid-cols-6 gap-1 text-xs text-center">
+              <label class="pill szdetail-outcome" data-shot="1" data-val="OB">OB</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Penalty">Penalty</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Bunker">Bunker</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Topped">Topped</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Heavy Duff">Heavy Duff</label>
+              <label class="pill szdetail-outcome" data-shot="1" data-val="Shank">Shank</label>
+            </div>
+          </div>
+
+          <!-- Shot 2 -->
+          <div class="mb-4">
+            <div class="text-xs font-semibold mb-1">Shot 2</div>
+            <div class="grid md:grid-cols-3 gap-2 mb-2">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Target yard</div>
+                <select id="szshot2-target" class="w-full p-2 border rounded-md szdetail-select" data-shot="2" data-field="targetYard"></select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Club</div>
+                <select id="szshot2-club" class="w-full p-2 border rounded-md szdetail-select" data-shot="2" data-field="club">
+                  <option value=""></option>
+                  <option value="PW">PW</option>
+                  <option value="56">56</option>
+                  <option value="50">50</option>
+                  <option value="Putter">Putter</option>
+                  <option value="52">52</option>
+                  <option value="8I">8I</option>
+                  <option value="9I">9I</option>
+                </select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Actual yard</div>
+                <select id="szshot2-actual" class="w-full p-2 border rounded-md szdetail-select" data-shot="2" data-field="actualYard"></select>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mb-1">Outcomes</div>
+            <div class="grid grid-cols-5 gap-1 text-xs text-center mb-1">
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Short">Short</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Straight">Straight</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Over">Over</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Left">Left</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Right">Right</label>
+            </div>
+            <div class="grid grid-cols-6 gap-1 text-xs text-center">
+              <label class="pill szdetail-outcome" data-shot="2" data-val="OB">OB</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Penalty">Penalty</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Bunker">Bunker</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Topped">Topped</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Heavy Duff">Heavy Duff</label>
+              <label class="pill szdetail-outcome" data-shot="2" data-val="Shank">Shank</label>
+            </div>
+          </div>
+
+          <!-- Shot 3 -->
+          <div>
+            <div class="text-xs font-semibold mb-1">Shot 3</div>
+            <div class="grid md:grid-cols-3 gap-2 mb-2">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Target yard</div>
+                <select id="szshot3-target" class="w-full p-2 border rounded-md szdetail-select" data-shot="3" data-field="targetYard"></select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Club</div>
+                <select id="szshot3-club" class="w-full p-2 border rounded-md szdetail-select" data-shot="3" data-field="club">
+                  <option value=""></option>
+                  <option value="PW">PW</option>
+                  <option value="56">56</option>
+                  <option value="50">50</option>
+                  <option value="Putter">Putter</option>
+                  <option value="52">52</option>
+                  <option value="8I">8I</option>
+                  <option value="9I">9I</option>
+                </select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Actual yard</div>
+                <select id="szshot3-actual" class="w-full p-2 border rounded-md szdetail-select" data-shot="3" data-field="actualYard"></select>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mb-1">Outcomes</div>
+            <div class="grid grid-cols-5 gap-1 text-xs text-center mb-1">
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Short">Short</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Straight">Straight</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Over">Over</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Left">Left</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Right">Right</label>
+            </div>
+            <div class="grid grid-cols-6 gap-1 text-xs text-center">
+              <label class="pill szdetail-outcome" data-shot="3" data-val="OB">OB</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Penalty">Penalty</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Bunker">Bunker</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Topped">Topped</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Heavy Duff">Heavy Duff</label>
+              <label class="pill szdetail-outcome" data-shot="3" data-val="Shank">Shank</label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Putt Detail -->
+      <div class="mt-4">
+        <div class="p-3 rounded-lg border">
+          <div class="text-sm font-semibold mb-2">Putt Detail</div>
+
+          <!-- Putt 1 -->
+          <div class="mb-4">
+            <div class="text-xs font-semibold mb-1">Putt 1</div>
+            <div class="grid md:grid-cols-3 gap-2 mb-2">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Target yard</div>
+                <select id="putt1-target" class="w-full p-2 border rounded-md puttdetail-select" data-putt="1" data-field="targetYard"></select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Result</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-result" data-putt="1" data-val="In">In (holed)</label>
+                  <label class="pill puttdetail-result" data-putt="1" data-val="Tap-in">Tap-in (next OK)</label>
+                  <label class="pill puttdetail-result" data-putt="1" data-val="Short miss">Short miss</label>
+                  <label class="pill puttdetail-result" data-putt="1" data-val="Long miss">Long miss</label>
+                  <label class="pill puttdetail-result" data-putt="1" data-val="Left miss">Left miss</label>
+                  <label class="pill puttdetail-result" data-putt="1" data-val="Right miss">Right miss</label>
+                  <label class="pill puttdetail-result" data-putt="1" data-val="Lip-out">Lip-out</label>
+                </div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Stroke</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-stroke" data-putt="1" data-val="Straight (on line)">Straight (on line)</label>
+                  <label class="pill puttdetail-stroke" data-putt="1" data-val="Push right">Push right</label>
+                  <label class="pill puttdetail-stroke" data-putt="1" data-val="Push left">Push left</label>
+                  <label class="pill puttdetail-stroke" data-putt="1" data-val="Short">Short</label>
+                  <label class="pill puttdetail-stroke" data-putt="1" data-val="Over">Over</label>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mb-1">Read (Green Read)</div>
+            <div class="grid grid-cols-3 gap-1 text-xs text-center">
+              <label class="pill puttdetail-read" data-putt="1" data-val="Too much R">Too much R</label>
+              <label class="pill puttdetail-read" data-putt="1" data-val="R OK">R OK</label>
+              <label class="pill puttdetail-read" data-putt="1" data-val="Too little R">Too little R</label>
+              <label class="pill puttdetail-read" data-putt="1" data-val="Too much L">Too much L</label>
+              <label class="pill puttdetail-read" data-putt="1" data-val="L OK">L OK</label>
+              <label class="pill puttdetail-read" data-putt="1" data-val="Too little L">Too little L</label>
+            </div>
+          </div>
+
+          <!-- Putt 2 -->
+          <div class="mb-4">
+            <div class="text-xs font-semibold mb-1">Putt 2</div>
+            <div class="grid md:grid-cols-3 gap-2 mb-2">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Target yard</div>
+                <select id="putt2-target" class="w-full p-2 border rounded-md puttdetail-select" data-putt="2" data-field="targetYard"></select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Result</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-result" data-putt="2" data-val="In">In (holed)</label>
+                  <label class="pill puttdetail-result" data-putt="2" data-val="Tap-in">Tap-in (next OK)</label>
+                  <label class="pill puttdetail-result" data-putt="2" data-val="Short miss">Short miss</label>
+                  <label class="pill puttdetail-result" data-putt="2" data-val="Long miss">Long miss</label>
+                  <label class="pill puttdetail-result" data-putt="2" data-val="Left miss">Left miss</label>
+                  <label class="pill puttdetail-result" data-putt="2" data-val="Right miss">Right miss</label>
+                  <label class="pill puttdetail-result" data-putt="2" data-val="Lip-out">Lip-out</label>
+                </div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Stroke</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-stroke" data-putt="2" data-val="Straight (on line)">Straight (on line)</label>
+                  <label class="pill puttdetail-stroke" data-putt="2" data-val="Push right">Push right</label>
+                  <label class="pill puttdetail-stroke" data-putt="2" data-val="Push left">Push left</label>
+                  <label class="pill puttdetail-stroke" data-putt="2" data-val="Short">Short</label>
+                  <label class="pill puttdetail-stroke" data-putt="2" data-val="Over">Over</label>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mb-1">Read (Green Read)</div>
+            <div class="grid grid-cols-3 gap-1 text-xs text-center">
+              <label class="pill puttdetail-read" data-putt="2" data-val="Too much R">Too much R</label>
+              <label class="pill puttdetail-read" data-putt="2" data-val="R OK">R OK</label>
+              <label class="pill puttdetail-read" data-putt="2" data-val="Too little R">Too little R</label>
+              <label class="pill puttdetail-read" data-putt="2" data-val="Too much L">Too much L</label>
+              <label class="pill puttdetail-read" data-putt="2" data-val="L OK">L OK</label>
+              <label class="pill puttdetail-read" data-putt="2" data-val="Too little L">Too little L</label>
+            </div>
+          </div>
+
+          <!-- Putt 3 -->
+          <div class="mb-4">
+            <div class="text-xs font-semibold mb-1">Putt 3</div>
+            <div class="grid md:grid-cols-3 gap-2 mb-2">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Target yard</div>
+                <select id="putt3-target" class="w-full p-2 border rounded-md puttdetail-select" data-putt="3" data-field="targetYard"></select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Result</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-result" data-putt="3" data-val="In">In (holed)</label>
+                  <label class="pill puttdetail-result" data-putt="3" data-val="Tap-in">Tap-in (next OK)</label>
+                  <label class="pill puttdetail-result" data-putt="3" data-val="Short miss">Short miss</label>
+                  <label class="pill puttdetail-result" data-putt="3" data-val="Long miss">Long miss</label>
+                  <label class="pill puttdetail-result" data-putt="3" data-val="Left miss">Left miss</label>
+                  <label class="pill puttdetail-result" data-putt="3" data-val="Right miss">Right miss</label>
+                  <label class="pill puttdetail-result" data-putt="3" data-val="Lip-out">Lip-out</label>
+                </div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Stroke</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-stroke" data-putt="3" data-val="Straight (on line)">Straight (on line)</label>
+                  <label class="pill puttdetail-stroke" data-putt="3" data-val="Push right">Push right</label>
+                  <label class="pill puttdetail-stroke" data-putt="3" data-val="Push left">Push left</label>
+                  <label class="pill puttdetail-stroke" data-putt="3" data-val="Short">Short</label>
+                  <label class="pill puttdetail-stroke" data-putt="3" data-val="Over">Over</label>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mb-1">Read (Green Read)</div>
+            <div class="grid grid-cols-3 gap-1 text-xs text-center">
+              <label class="pill puttdetail-read" data-putt="3" data-val="Too much R">Too much R</label>
+              <label class="pill puttdetail-read" data-putt="3" data-val="R OK">R OK</label>
+              <label class="pill puttdetail-read" data-putt="3" data-val="Too little R">Too little R</label>
+              <label class="pill puttdetail-read" data-putt="3" data-val="Too much L">Too much L</label>
+              <label class="pill puttdetail-read" data-putt="3" data-val="L OK">L OK</label>
+              <label class="pill puttdetail-read" data-putt="3" data-val="Too little L">Too little L</label>
+            </div>
+          </div>
+
+          <!-- Putt 4 -->
+          <div>
+            <div class="text-xs font-semibold mb-1">Putt 4</div>
+            <div class="grid md:grid-cols-3 gap-2 mb-2">
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Target yard</div>
+                <select id="putt4-target" class="w-full p-2 border rounded-md puttdetail-select" data-putt="4" data-field="targetYard"></select>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Result</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-result" data-putt="4" data-val="In">In (holed)</label>
+                  <label class="pill puttdetail-result" data-putt="4" data-val="Tap-in">Tap-in (next OK)</label>
+                  <label class="pill puttdetail-result" data-putt="4" data-val="Short miss">Short miss</label>
+                  <label class="pill puttdetail-result" data-putt="4" data-val="Long miss">Long miss</label>
+                  <label class="pill puttdetail-result" data-putt="4" data-val="Left miss">Left miss</label>
+                  <label class="pill puttdetail-result" data-putt="4" data-val="Right miss">Right miss</label>
+                  <label class="pill puttdetail-result" data-putt="4" data-val="Lip-out">Lip-out</label>
+                </div>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500 mb-1">Stroke</div>
+                <div class="grid grid-cols-3 gap-1 text-xs text-center">
+                  <label class="pill puttdetail-stroke" data-putt="4" data-val="Straight (on line)">Straight (on line)</label>
+                  <label class="pill puttdetail-stroke" data-putt="4" data-val="Push right">Push right</label>
+                  <label class="pill puttdetail-stroke" data-putt="4" data-val="Push left">Push left</label>
+                  <label class="pill puttdetail-stroke" data-putt="4" data-val="Short">Short</label>
+                  <label class="pill puttdetail-stroke" data-putt="4" data-val="Over">Over</label>
+                </div>
+              </div>
+            </div>
+            <div class="text-xs text-gray-500 mb-1">Read (Green Read)</div>
+            <div class="grid grid-cols-3 gap-1 text-xs text-center">
+              <label class="pill puttdetail-read" data-putt="4" data-val="Too much R">Too much R</label>
+              <label class="pill puttdetail-read" data-putt="4" data-val="R OK">R OK</label>
+              <label class="pill puttdetail-read" data-putt="4" data-val="Too little R">Too little R</label>
+              <label class="pill puttdetail-read" data-putt="4" data-val="Too much L">Too much L</label>
+              <label class="pill puttdetail-read" data-putt="4" data-val="L OK">L OK</label>
+              <label class="pill puttdetail-read" data-putt="4" data-val="Too little L">Too little L</label>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Other (To SZ only) -->
+      <div class="grid md:grid-cols-1 gap-4 mt-4">
         <!-- To SZ Other -->
         <div class="p-3 rounded-lg border">
           <div class="text-sm font-semibold mb-2">Other — To SZ</div>
@@ -275,60 +592,6 @@
                 <button type="button" data-key="toSZ.shank" data-act="-" class="px-3 py-2 bg-gray-100 rounded">-</button>
                 <div id="toSZ-shank" class="text-xl font-bold">0</div>
                 <button type="button" data-key="toSZ.shank" data-act="+" class="px-3 py-2 bg-gray-100 rounded">+</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- SZ to G Other -->
-        <div class="p-3 rounded-lg border">
-          <div class="text-sm font-semibold mb-2">Other — SZ to G</div>
-          <div class="grid md:grid-cols-3 gap-3">
-            <div class="border rounded-md p-2 text-center">
-              <div class="text-xs text-gray-500">OB</div>
-              <div class="flex items-center justify-between">
-                <button type="button" data-key="szToG.ob" data-act="-" class="px-3 py-2 bg-gray-100 rounded">-</button>
-                <div id="szToG-ob" class="text-xl font-bold">0</div>
-                <button type="button" data-key="szToG.ob" data-act="+" class="px-3 py-2 bg-gray-100 rounded">+</button>
-              </div>
-            </div>
-            <div class="border rounded-md p-2 text-center">
-              <div class="text-xs text-gray-500">Penalty</div>
-              <div class="flex items-center justify-between">
-                <button type="button" data-key="szToG.penalty" data-act="-" class="px-3 py-2 bg-gray-100 rounded">-</button>
-                <div id="szToG-penalty" class="text-xl font-bold">0</div>
-                <button type="button" data-key="szToG.penalty" data-act="+" class="px-3 py-2 bg-gray-100 rounded">+</button>
-              </div>
-            </div>
-            <div class="border rounded-md p-2 text-center">
-              <div class="text-xs text-gray-500">Bunker</div>
-              <div class="flex items-center justify-between">
-                <button type="button" data-key="szToG.bunker" data-act="-" class="px-3 py-2 bg-gray-100 rounded">-</button>
-                <div id="szToG-bunker" class="text-xl font-bold">0</div>
-                <button type="button" data-key="szToG.bunker" data-act="+" class="px-3 py-2 bg-gray-100 rounded">+</button>
-              </div>
-            </div>
-            <div class="border rounded-md p-2 text-center">
-              <div class="text-xs text-gray-500">Topped</div>
-              <div class="flex items-center justify-between">
-                <button type="button" data-key="szToG.topped" data-act="-" class="px-3 py-2 bg-gray-100 rounded">-</button>
-                <div id="szToG-topped" class="text-xl font-bold">0</div>
-                <button type="button" data-key="szToG.topped" data-act="+" class="px-3 py-2 bg-gray-100 rounded">+</button>
-              </div>
-            </div>
-            <div class="border rounded-md p-2 text-center">
-              <div class="text-xs text-gray-500">Heavy Duff</div>
-              <div class="flex items-center justify-between">
-                <button type="button" data-key="szToG.heavyDuff" data-act="-" class="px-3 py-2 bg-gray-100 rounded">-</button>
-                <div id="szToG-heavyDuff" class="text-xl font-bold">0</div>
-                <button type="button" data-key="szToG.heavyDuff" data-act="+" class="px-3 py-2 bg-gray-100 rounded">+</button>
-              </div>
-            </div>
-            <div class="border rounded-md p-2 text-center">
-              <div class="text-xs text-gray-500">Shank</div>
-              <div class="flex items-center justify-between">
-                <button type="button" data-key="szToG.shank" data-act="-" class="px-3 py-2 bg-gray-100 rounded">-</button>
-                <div id="szToG-shank" class="text-xl font-bold">0</div>
-                <button type="button" data-key="szToG.shank" data-act="+" class="px-3 py-2 bg-gray-100 rounded">+</button>
               </div>
             </div>
           </div>
@@ -397,6 +660,23 @@
       ? Array.from({length:9},(_,i)=>10+i).concat(Array.from({length:9},(_,i)=>1+i))
       : Array.from({length:9},(_,i)=>1+i).concat(Array.from({length:9},(_,i)=>10+i));
 
+    function createDefaultSGDetail(){
+      return [
+        { targetYard:null, club:'', actualYard:null, outcomes:[] },
+        { targetYard:null, club:'', actualYard:null, outcomes:[] },
+        { targetYard:null, club:'', actualYard:null, outcomes:[] }
+      ];
+    }
+
+    function createDefaultPuttDetail(){
+      return [
+        { targetYard:null, stroke:[], result:null, read:null },
+        { targetYard:null, stroke:[], result:null, read:null },
+        { targetYard:null, stroke:[], result:null, read:null },
+        { targetYard:null, stroke:[], result:null, read:null }
+      ];
+    }
+
     function createRound(id,date,course,parArr,start,targets){
       const holes=[];
       for(let i=1;i<=DEFAULT_HOLES;i++){
@@ -408,10 +688,12 @@
           putts:0,          // G → HO（Putts）
           resultOverride:null,
           targetGoal: (targets && targets[i-1]) || 'Bogey',
-          // 🆕 split other
+          // split other
           toSZ:{ ob:0, penalty:0, bunker:0, topped:0, heavyDuff:0, shank:0 },
-          szToG:{ ob:0, penalty:0, bunker:0, topped:0, heavyDuff:0, shank:0 },
-          memo:''
+          szToG:{ ob:0, penalty:0, bunker:0, topped:0, heavyDuff:0, shank:0 }, // 互換のため残す（UIでは使わない）
+          memo:'',
+          sgDetail: createDefaultSGDetail(), // SZ to G detail
+          puttDetail: createDefaultPuttDetail() // 修正13: Putt detail
         });
       }
       return {
@@ -437,21 +719,58 @@
     // Upgrade old schemas to v3 on load
     function upgradeRoundIfNeeded(r){
       if(!r) return r;
-      if(r.schemaVersion === 'v3') return r;
-      // add playOrder if missing
       if(!r.playOrder) r.playOrder = playOrderFor(r.playStart||'OUT');
-      // upgrade holes
+
       r.holes.forEach(h=>{
+        // old other → split
         if(!h.toSZ || !h.szToG){
           const legacy = { ob:h.ob||0, penalty:h.penalty||0, bunker:h.bunker||0, topped:h.topped||0, heavyDuff:h.heavyDuff||0, shank:h.shank||0 };
           h.toSZ = { ...legacy };
           h.szToG = { ob:0, penalty:0, bunker:0, topped:0, heavyDuff:0, shank:0 };
-          // clean legacy keys
           delete h.ob; delete h.penalty; delete h.bunker; delete h.topped; delete h.heavyDuff; delete h.shank;
         }
         if(typeof h.memo!=="string") h.memo='';
         if(!Number.isInteger(h.putts)) h.putts = h.putts||0;
+
+        // sgDetail 初期化
+        if(!Array.isArray(h.sgDetail)){
+          h.sgDetail = createDefaultSGDetail();
+        } else {
+          const arr = h.sgDetail;
+          for(let i=0;i<3;i++){
+            if(!arr[i]){
+              arr[i] = { targetYard:null, club:'', actualYard:null, outcomes:[] };
+            } else {
+              if(typeof arr[i].targetYard!=='number') arr[i].targetYard = (arr[i].targetYard==null?null:Number(arr[i].targetYard));
+              if(typeof arr[i].actualYard!=='number') arr[i].actualYard = (arr[i].actualYard==null?null:Number(arr[i].actualYard));
+              if(typeof arr[i].club!=='string') arr[i].club = '';
+              if(!Array.isArray(arr[i].outcomes)) arr[i].outcomes = [];
+            }
+          }
+          h.sgDetail = arr.slice(0,3);
+        }
+
+        // 修正13: puttDetail 初期化
+        if(!Array.isArray(h.puttDetail)){
+          h.puttDetail = createDefaultPuttDetail();
+        } else {
+          const arr = h.puttDetail;
+          for(let i=0;i<4;i++){
+            if(!arr[i]){
+              arr[i] = { targetYard:null, stroke:[], result:null, read:null };
+            } else {
+              if(typeof arr[i].targetYard!=='string' && typeof arr[i].targetYard!=='number'){
+                arr[i].targetYard = null;
+              }
+              if(!Array.isArray(arr[i].stroke)) arr[i].stroke = [];
+              if(typeof arr[i].result!=='string') arr[i].result = null;
+              if(typeof arr[i].read!=='string')   arr[i].read   = null;
+            }
+          }
+          h.puttDetail = arr.slice(0,4);
+        }
       });
+
       r.schemaVersion = 'v3';
       return r;
     }
@@ -705,6 +1024,34 @@
       return ref;
     }
 
+    // 修正10: 0 yard を除去 & Putt専用30+対応
+    function populateYardSelect(id, max, value, isPutt){
+      const sel = document.getElementById(id);
+      if(!sel) return;
+
+      if(!sel.dataset.initialized){
+        let opts = '<option value=""></option>';
+
+        if(isPutt){
+          // Putt: 1〜30 (1刻み) + 30+
+          for(let y=1; y<=30; y++){
+            opts += `<option value="${y}">${y}</option>`;
+          }
+          opts += `<option value="30+">30+</option>`;
+        } else {
+          // 通常ショット: 5〜max (5刻み) / 0は不要
+          for(let y=5; y<=max; y+=5){
+            opts += `<option value="${y}">${y}</option>`;
+          }
+        }
+
+        sel.innerHTML = opts;
+        sel.dataset.initialized = '1';
+      }
+
+      sel.value = (value==null ? '' : String(value));
+    }
+
     /* ========== Tracker ========== */
     function renderTracker(){
       const r=state.round; if(!r) return; const h=curHole();
@@ -772,7 +1119,7 @@
       document.getElementById('ok-from').textContent = (h.strokesFromSZ||0) <= targetSZtoG ? '✅' : '❌';
       document.getElementById('ok-gtoho').textContent = (h.putts||0) <= targetPutts ? '✅' : '❌';
 
-      // Result override with label & warning (修正6: 3要素合計と比較)
+      // Result override with label & warnings
       const toSz = h.strokesToSZ || 0;
       const szToG = h.strokesFromSZ || 0;
       const putts = h.putts || 0;
@@ -781,6 +1128,7 @@
       const warnEl = document.getElementById('result-warning');
       const dispRes = document.getElementById('disp-result');
       const dispResLabel = document.getElementById('disp-result-label');
+
       if(Number.isInteger(h.resultOverride)){
         dispRes.textContent = h.resultOverride;
         const diff = h.resultOverride - h.par;
@@ -797,15 +1145,23 @@
         dispRes.textContent = '';
         if(dispResLabel) dispResLabel.textContent = '';
       }
+
+      const warnMsgs = [];
       if(Number.isInteger(h.resultOverride) && h.resultOverride!==expectedTotal){
-        warnEl.textContent = `⚠️ Mismatch: To SZ + SZ to G + Putts = ${expectedTotal}, Result = ${h.resultOverride}`;
+        warnMsgs.push(`⚠️ Mismatch: To SZ + SZ to G + Putts = ${expectedTotal}, Result = ${h.resultOverride}`);
+      }
+
+    
+
+      if(warnMsgs.length){
+        warnEl.textContent = warnMsgs.join('  ');
         warnEl.className = 'text-sm text-red-600 font-semibold';
       } else {
         warnEl.textContent = '';
         warnEl.className = 'text-sm text-green-600';
       }
 
-      // Other (split) display
+      // Other (To SZ) display
       document.getElementById('toSZ-ob').textContent = h.toSZ.ob||0;
       document.getElementById('toSZ-penalty').textContent = h.toSZ.penalty||0;
       document.getElementById('toSZ-bunker').textContent = h.toSZ.bunker||0;
@@ -813,31 +1169,69 @@
       document.getElementById('toSZ-heavyDuff').textContent = h.toSZ.heavyDuff||0;
       document.getElementById('toSZ-shank').textContent = h.toSZ.shank||0;
 
-      document.getElementById('szToG-ob').textContent = h.szToG.ob||0;
-      document.getElementById('szToG-penalty').textContent = h.szToG.penalty||0;
-      document.getElementById('szToG-bunker').textContent = h.szToG.bunker||0;
-      document.getElementById('szToG-topped').textContent = h.szToG.topped||0;
-      document.getElementById('szToG-heavyDuff').textContent = h.szToG.heavyDuff||0;
-      document.getElementById('szToG-shank').textContent = h.szToG.shank||0;
-
       // Target toggles
       document.getElementById('tg-par').classList.toggle('on', h.targetGoal==='Par');
       document.getElementById('tg-bogey').classList.toggle('on', h.targetGoal==='Bogey');
       document.getElementById('tg-dbogey').classList.toggle('on', h.targetGoal==='DoubleBogey');
 
       // Memo
-      document.getElementById('hole-memo').value = h.memo || '';
-      document.getElementById('hole-memo').oninput = (e)=>{
+      const memoEl = document.getElementById('hole-memo');
+      memoEl.value = h.memo || '';
+      memoEl.oninput = (e)=>{
         h.memo = e.target.value; save();
       };
+
+      // SZ to G detail 反映
+      const sgArr = Array.isArray(h.sgDetail) ? h.sgDetail : createDefaultSGDetail();
+      sgArr.forEach((shot, idx)=>{
+        const n = idx+1;
+        populateYardSelect(`szshot${n}-target`, 120, shot.targetYard);
+        populateYardSelect(`szshot${n}-actual`, 140, shot.actualYard);
+
+        const clubSel = document.getElementById(`szshot${n}-club`);
+        if(clubSel){
+          clubSel.value = shot.club || '';
+        }
+
+        const outs = Array.isArray(shot.outcomes) ? shot.outcomes : [];
+        document.querySelectorAll(`.szdetail-outcome[data-shot="${n}"]`).forEach(l=>{
+          const on = outs.includes(l.dataset.val);
+          l.classList.toggle('on', on);
+        });
+      });
+
+      // Putt Detail 反映
+      const pArr = Array.isArray(h.puttDetail)? h.puttDetail : createDefaultPuttDetail();
+      pArr.forEach((p, idx)=>{
+        const n = idx+1;
+        populateYardSelect(`putt${n}-target`, 50, p.targetYard, true);
+
+        // Result（単一）
+        document.querySelectorAll(`.puttdetail-result[data-putt="${n}"]`).forEach(lbl=>{
+          const on = (p.result === lbl.dataset.val);
+          lbl.classList.toggle('on', on);
+        });
+
+        // Stroke（複数）
+        const strokes = Array.isArray(p.stroke)? p.stroke : [];
+        document.querySelectorAll(`.puttdetail-stroke[data-putt="${n}"]`).forEach(lbl=>{
+          const on = strokes.includes(lbl.dataset.val);
+          lbl.classList.toggle('on', on);
+        });
+
+        // Read（単一）
+        document.querySelectorAll(`.puttdetail-read[data-putt="${n}"]`).forEach(lbl=>{
+          const on = (p.read === lbl.dataset.val);
+          lbl.classList.toggle('on', on);
+        });
+      });
     }
 
     function updateHole(key, val){ const h=curHole(); setByPath(h, key, val); save(); renderTracker(); }
 
-    // 「最初の＋」でターゲット値を入れるインクリメント（修正2含む）
+    // 「最初の＋」でターゲット値を入れるインクリメント
     function inc(key, delta){
       const h = curHole();
-      const r = state.round;
       const {targetScore, targetTo, targetSZtoG, targetPutts} = calcTargetsFor(h);
 
       const baseRaw = getByPath(h, key);
@@ -846,9 +1240,9 @@
       if (delta > 0 && (baseRaw==null || base===0)) {
         if (key === 'resultOverride')      v = targetScore;
         else if (key === 'strokesToSZ')    v = targetTo;
-        else if (key === 'strokesFromSZ')  v = (targetSZtoG === 0 ? 1 : targetSZtoG); // 修正2
+        else if (key === 'strokesFromSZ')  v = (targetSZtoG === 0 ? 1 : targetSZtoG);
         else if (key === 'putts')          v = targetPutts;
-        else                               v = 1; // other系やネストキーの初期値
+        else                               v = 1;
       } else {
         v = Math.max(0, (base||0) + delta);
       }
@@ -863,47 +1257,40 @@
       return (h.strokesToSZ||0)+(h.strokesFromSZ||0)+(h.putts||0)>0 || Number.isInteger(h.resultOverride);
     }
 
-    function computeSegmentSummary(r, filterFn, denom){
+    // 修正11・12対応: vsTargetはプレー済みホールのみ / GIRは数で返す
+    function computeSegmentSummary(r, filterFn){
       let total=0, par=0, target=0, putts=0, played=0;
       let girCount=0, gir1Count=0;
 
       r.playOrder.forEach(no=>{
-        const h=r.holes[no-1];
         if(!filterFn(no)) return;
-
+        const h=r.holes[no-1];
         const playedThis = isPlayedHole(h);
-        if(playedThis){
-          played++;
-          const auto = getGrossAuto(h, r);
-          const gross = Number.isInteger(h.resultOverride)? h.resultOverride : auto;
-          total += gross;
-          par   += h.par;
-          const {targetScore} = calcTargetsFor(h);
-          target += targetScore;
-          putts  += (h.putts||0);
+        if(!playedThis) return;
 
-          const strokesToGreen = (h.strokesToSZ||0)+(h.strokesFromSZ||0);
-          if(strokesToGreen>0){
-            if(strokesToGreen <= h.par-2) girCount++;
-            else if(strokesToGreen <= h.par-1) gir1Count++;
-          }
-        } else {
-          const {targetScore} = calcTargetsFor(h);
-          target += targetScore;
+        played++;
+        const auto = getGrossAuto(h, r);
+        const gross = Number.isInteger(h.resultOverride)? h.resultOverride : auto;
+        total += gross;
+        par   += h.par;
+
+        const {targetScore} = calcTargetsFor(h);
+        target += targetScore;
+        putts  += (h.putts||0);
+
+        const strokesToGreen = (h.strokesToSZ||0)+(h.strokesFromSZ||0);
+        if(strokesToGreen>0){
+          if(strokesToGreen <= h.par-2) girCount++;
+          else if(strokesToGreen <= h.par-1) gir1Count++;
         }
       });
-
-      const girPct     = denom>0 ? Math.round(girCount / denom * 100) : 0;
-      const gir1Pct    = denom>0 ? Math.round(gir1Count / denom * 100) : 0;
-      const girAndPct  = denom>0 ? Math.round((girCount + gir1Count) / denom * 100) : 0; // 修正4
 
       return {
         total, par, target, putts, played,
         vsPar: total-par,
         vsTarget: total-target,
-        girPct,
-        gir1Pct,
-        girAndPct
+        gir: girCount,
+        girAnd: girCount + gir1Count
       };
     }
 
@@ -913,10 +1300,26 @@
     function renderScorecard(){
       const r=state.round; if(!r) return;
 
-      // 修正3: Total は入力済みホールのみ
-      const allSummary = computeSegmentSummary(r, no => isPlayedHole(r.holes[no - 1]), DEFAULT_HOLES);
-      const outSummary = computeSegmentSummary(r, no=>no>=1 && no<=9, 9);
-      const inSummary  = computeSegmentSummary(r, no=>no>=10 && no<=18, 9);
+      const allSummary = computeSegmentSummary(r, no => isPlayedHole(r.holes[no - 1]));
+// ==== 修正：OUT / IN は常に全ホールの TargetScore を合計して表示 ====
+
+// OUT 9ホールすべての TargetScore
+const outTarget = r.holes
+  .slice(0,9)
+  .reduce((s,h)=> s + calcTargetsFor(h).targetScore, 0);
+
+// IN 9ホールすべての TargetScore
+const inTarget = r.holes
+  .slice(9,18)
+  .reduce((s,h)=> s + calcTargetsFor(h).targetScore, 0);
+
+// 既存 summary（played だけ計算されるが target は後で上書き）
+const outSummary = computeSegmentSummary(r, no=>no>=1 && no<=9, 9);
+const inSummary  = computeSegmentSummary(r, no=>no>=10 && no<=18, 9);
+
+// Target の値を “全ホール合計” に上書き
+outSummary.target = outTarget;
+inSummary.target  = inTarget;
 
       const totalTargetAll = r.holes.reduce((s,x)=> s + calcTargetsFor(x).targetScore, 0);
 
@@ -929,8 +1332,8 @@
             <div><div class='grid-head'>Total Target</div><div class='font-bold'>${totalTargetAll}</div></div>
             <div><div class='grid-head'>Putts</div><div class='font-bold'>${allSummary.putts}</div></div>
             <div><div class='grid-head'>Played</div><div class='font-bold'>${allSummary.played}/${DEFAULT_HOLES}</div></div>
-            <div><div class='grid-head'>GIR%</div><div class='font-bold'>${allSummary.girPct}%</div></div>
-            <div><div class='grid-head'>GIR&+1%</div><div class='font-bold'>${allSummary.girAndPct}%</div></div>
+            <div><div class='grid-head'>GIR</div><div class='font-bold'>${allSummary.gir}</div></div>
+            <div><div class='grid-head'>GIR&+1</div><div class='font-bold'>${allSummary.girAnd}</div></div>
           </div>
           <div class="grid grid-cols-8 gap-2 text-right">
             <div><div class='grid-head'>OUT Total</div><div class='font-bold'>${outSummary.total}</div></div>
@@ -939,8 +1342,8 @@
             <div><div class='grid-head'>OUT Target</div><div class='font-bold'>${outSummary.target}</div></div>
             <div><div class='grid-head'>OUT Putts</div><div class='font-bold'>${outSummary.putts}</div></div>
             <div><div class='grid-head'>OUT Played</div><div class='font-bold'>${outSummary.played}/9</div></div>
-            <div><div class='grid-head'>OUT GIR%</div><div class='font-bold'>${outSummary.girPct}%</div></div>
-            <div><div class='grid-head'>OUT GIR&+1%</div><div class='font-bold'>${outSummary.girAndPct}%</div></div>
+            <div><div class='grid-head'>OUT GIR</div><div class='font-bold'>${outSummary.gir}</div></div>
+            <div><div class='grid-head'>OUT GIR&+1</div><div class='font-bold'>${outSummary.girAnd}</div></div>
           </div>
           <div class="grid grid-cols-8 gap-2 text-right">
             <div><div class='grid-head'>IN Total</div><div class='font-bold'>${inSummary.total}</div></div>
@@ -949,8 +1352,8 @@
             <div><div class='grid-head'>IN Target</div><div class='font-bold'>${inSummary.target}</div></div>
             <div><div class='grid-head'>IN Putts</div><div class='font-bold'>${inSummary.putts}</div></div>
             <div><div class='grid-head'>IN Played</div><div class='font-bold'>${inSummary.played}/9</div></div>
-            <div><div class='grid-head'>IN GIR%</div><div class='font-bold'>${inSummary.girPct}%</div></div>
-            <div><div class='grid-head'>IN GIR&+1%</div><div class='font-bold'>${inSummary.girAndPct}%</div></div>
+            <div><div class='grid-head'>IN GIR</div><div class='font-bold'>${inSummary.gir}</div></div>
+            <div><div class='grid-head'>IN GIR&+1</div><div class='font-bold'>${inSummary.girAnd}</div></div>
           </div>
         </div>`;
 
@@ -960,7 +1363,6 @@
         const {targetScore, targetTo, targetSZtoG, targetPutts} = calcTargetsFor(h);
         const grossAuto = getGrossAuto(h, r);
         const gross = Number.isInteger(h.resultOverride)? h.resultOverride : grossAuto;
-        // 修正6: mismatchは3要素合計と比較
         const expectedTotal = (h.strokesToSZ||0) + (h.strokesFromSZ||0) + (h.putts||0);
         const mismatch = Number.isInteger(h.resultOverride) && h.resultOverride!==expectedTotal;
         const okTo=(h.strokesToSZ||0) <= targetTo;
@@ -987,7 +1389,6 @@
           }
         }
 
-        // 修正7: Target列を vs Par 表示
         const diffVsPar = targetScore - h.par;
         let targetDisplay = 'E';
         if (diffVsPar > 0) targetDisplay = `+${diffVsPar}`;
@@ -1036,9 +1437,15 @@
       const rows = [[
         'Hole','Par','TargetScore','ToSZ','SZtoG','Putts','Gross',
         'TeeClub','TeeResult','TeeDirection',
-        // split other
         'ToSZ_OB','ToSZ_Penalty','ToSZ_Bunker','ToSZ_Topped','ToSZ_HeavyDuff','ToSZ_Shank',
         'SZtoG_OB','SZtoG_Penalty','SZtoG_Bunker','SZtoG_Topped','SZtoG_HeavyDuff','SZtoG_Shank',
+        'Shot1_TargetYard','Shot1_Club','Shot1_ActualYard','Shot1_Outcomes',
+        'Shot2_TargetYard','Shot2_Club','Shot2_ActualYard','Shot2_Outcomes',
+        'Shot3_TargetYard','Shot3_Club','Shot3_ActualYard','Shot3_Outcomes',
+        'Putt1_TargetYard','Putt1_Stroke','Putt1_Result','Putt1_Read',
+        'Putt2_TargetYard','Putt2_Stroke','Putt2_Result','Putt2_Read',
+        'Putt3_TargetYard','Putt3_Stroke','Putt3_Result','Putt3_Read',
+        'Putt4_TargetYard','Putt4_Stroke','Putt4_Result','Putt4_Read',
         'vsTarget','vsPar','GIRLabel','Memo'
       ]];
 
@@ -1055,6 +1462,26 @@
           else if(strokesToGreen <= h.par-1) girLabel = 'GIR+1';
         }
 
+        const sgArr = Array.isArray(h.sgDetail) ? h.sgDetail : createDefaultSGDetail();
+        const s1 = sgArr[0] || {};
+        const s2 = sgArr[1] || {};
+        const s3 = sgArr[2] || {};
+
+        const s1Out = Array.isArray(s1.outcomes) ? s1.outcomes.join(';') : '';
+        const s2Out = Array.isArray(s2.outcomes) ? s2.outcomes.join(';') : '';
+        const s3Out = Array.isArray(s3.outcomes) ? s3.outcomes.join(';') : '';
+
+        const pArr = Array.isArray(h.puttDetail)? h.puttDetail : createDefaultPuttDetail();
+        const puttCells = pArr.slice(0,4).map(p=>{
+          const strokeStr = Array.isArray(p.stroke)? p.stroke.join(';') : '';
+          return [
+            p.targetYard==null ? '' : p.targetYard,
+            strokeStr,
+            p.result || '',
+            p.read || ''
+          ];
+        }).flat();
+
         rows.push([
           no, h.par, targetScore,
           (h.strokesToSZ||0),
@@ -1062,9 +1489,12 @@
           (h.putts||0),
           gross,
           h.teeClub, h.teeResult, h.teeDirection,
-          // split other
           (h.toSZ.ob||0),(h.toSZ.penalty||0),(h.toSZ.bunker||0),(h.toSZ.topped||0),(h.toSZ.heavyDuff||0),(h.toSZ.shank||0),
           (h.szToG.ob||0),(h.szToG.penalty||0),(h.szToG.bunker||0),(h.szToG.topped||0),(h.szToG.heavyDuff||0),(h.szToG.shank||0),
+          (s1.targetYard==null?'':s1.targetYard),(s1.club||''),(s1.actualYard==null?'':s1.actualYard),s1Out,
+          (s2.targetYard==null?'':s2.targetYard),(s2.club||''),(s2.actualYard==null?'':s2.actualYard),s2Out,
+          (s3.targetYard==null?'':s3.targetYard),(s3.club||''),(s3.actualYard==null?'':s3.actualYard),s3Out,
+          ...puttCells,
           (gross-targetScore),(gross-h.par),
           girLabel,
           h.memo || ''
@@ -1103,7 +1533,7 @@
       document.querySelectorAll('.tee-res-opt').forEach(l=> l.addEventListener('click', ()=> updateHole('teeResult', l.dataset.value)));
       document.querySelectorAll('.tee-dir-opt').forEach(l=> l.addEventListener('click', ()=> updateHole('teeDirection', l.dataset.value)));
 
-      // +/- counters (To SZ, SZ to G, Putts, Result override, Other-split)
+      // +/- counters
       document.querySelectorAll('[data-key][data-act]').forEach(b=> b.addEventListener('click', ()=> inc(b.dataset.key, b.dataset.act==='+'?1:-1)));
 
       // Target toggle
@@ -1113,6 +1543,106 @@
 
       // Scorecard back
       document.getElementById('btn-scorecard-back').addEventListener('click', ()=> switchView('tracker'));
+
+      // SZ to G detail select
+      document.querySelectorAll('.szdetail-select').forEach(sel=>{
+        sel.addEventListener('change', ()=>{
+          const shot = parseInt(sel.dataset.shot,10);
+          const field = sel.dataset.field;
+          if(!shot || !field) return;
+          const idx = shot-1;
+          const h = curHole();
+          if(!Array.isArray(h.sgDetail)) h.sgDetail = createDefaultSGDetail();
+          if(!h.sgDetail[idx]) h.sgDetail[idx] = { targetYard:null, club:'', actualYard:null, outcomes:[] };
+
+          let val = sel.value;
+          if(field === 'targetYard' || field === 'actualYard'){
+            val = val === '' ? null : Number(val);
+          }
+          h.sgDetail[idx][field] = val;
+          save(); renderTracker();
+        });
+      });
+
+      // SZ to G Outcomes pill
+      document.querySelectorAll('.szdetail-outcome').forEach(lbl=>{
+        lbl.addEventListener('click', ()=>{
+          const shot = parseInt(lbl.dataset.shot,10);
+          const val = lbl.dataset.val;
+          if(!shot || !val) return;
+          const idx = shot-1;
+          const h = curHole();
+          if(!Array.isArray(h.sgDetail)) h.sgDetail = createDefaultSGDetail();
+          if(!h.sgDetail[idx]) h.sgDetail[idx] = { targetYard:null, club:'', actualYard:null, outcomes:[] };
+
+          const arr = Array.isArray(h.sgDetail[idx].outcomes) ? h.sgDetail[idx].outcomes : [];
+          const i = arr.indexOf(val);
+          if(i>=0) arr.splice(i,1); else arr.push(val);
+          h.sgDetail[idx].outcomes = arr;
+          save(); renderTracker();
+        });
+      });
+
+      // Putt Detail: Target yard
+      document.querySelectorAll('.puttdetail-select').forEach(sel=>{
+        sel.addEventListener('change', ()=>{
+          const putt = parseInt(sel.dataset.putt,10)-1;
+          const field = sel.dataset.field;
+          const h = curHole();
+          if(!Array.isArray(h.puttDetail)) h.puttDetail = createDefaultPuttDetail();
+          if(!h.puttDetail[putt]) h.puttDetail[putt] = { targetYard:null, stroke:[], result:null, read:null };
+
+          let val = sel.value;
+          if(val === '') val = null;
+          h.puttDetail[putt][field] = val;
+          save(); renderTracker();
+        });
+      });
+
+      // Putt Detail: Result（単一）
+      document.querySelectorAll('.puttdetail-result').forEach(lbl=>{
+        lbl.addEventListener('click', ()=>{
+          const putt = parseInt(lbl.dataset.putt,10)-1;
+          const val = lbl.dataset.val;
+          const h = curHole();
+          if(!Array.isArray(h.puttDetail)) h.puttDetail = createDefaultPuttDetail();
+          if(!h.puttDetail[putt]) h.puttDetail[putt] = { targetYard:null, stroke:[], result:null, read:null };
+
+          h.puttDetail[putt].result = val;
+          save(); renderTracker();
+        });
+      });
+
+      // Putt Detail: Stroke（複数）
+      document.querySelectorAll('.puttdetail-stroke').forEach(lbl=>{
+        lbl.addEventListener('click', ()=>{
+          const putt = parseInt(lbl.dataset.putt,10)-1;
+          const val = lbl.dataset.val;
+          const h = curHole();
+          if(!Array.isArray(h.puttDetail)) h.puttDetail = createDefaultPuttDetail();
+          if(!h.puttDetail[putt]) h.puttDetail[putt] = { targetYard:null, stroke:[], result:null, read:null };
+
+          const arr = Array.isArray(h.puttDetail[putt].stroke) ? h.puttDetail[putt].stroke : [];
+          const idx = arr.indexOf(val);
+          if(idx>=0) arr.splice(idx,1); else arr.push(val);
+          h.puttDetail[putt].stroke = arr;
+          save(); renderTracker();
+        });
+      });
+
+      // Putt Detail: Read（単一）
+      document.querySelectorAll('.puttdetail-read').forEach(lbl=>{
+        lbl.addEventListener('click', ()=>{
+          const putt = parseInt(lbl.dataset.putt,10)-1;
+          const val = lbl.dataset.val;
+          const h = curHole();
+          if(!Array.isArray(h.puttDetail)) h.puttDetail = createDefaultPuttDetail();
+          if(!h.puttDetail[putt]) h.puttDetail[putt] = { targetYard:null, stroke:[], result:null, read:null };
+
+          h.puttDetail[putt].read = val;
+          save(); renderTracker();
+        });
+      });
     }
 
     /* ========== Init ========== */

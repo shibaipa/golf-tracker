@@ -3,7 +3,7 @@
   "short_name": "GolfTracker",
   "start_url": "./",
   "scope": "./",
-  "display": "standalone",
+  "display": "browser",
   "background_color": "#10b981",
   "theme_color": "#10b981",
   "icons": [
